@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Representa objetos que sabem simular o processo de "contagio" num 
  * dado ambiente, numa dada direcao e com uma dada intensidade.
- * @author in
+ * @author in Grupo 17 - Francisco O (53340) & Sofia Lourenco (54950) & Ines Marcelino (54991)
  * @date Novembro 2020
  */
 public class Simulador {

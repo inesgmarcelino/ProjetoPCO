@@ -7,6 +7,11 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Classe que representa as Regioes
+ * @author in Grupo 17 - Francisco O (53340) & Sofia Lourenco (54950) & Ines Marcelino (54991)
+ * @date Novembro 2020
+ */
 public class Regiao {
 	
 	private String nome;
@@ -16,6 +21,16 @@ public class Regiao {
 	private List<Par<Integer,Integer>> estradas;
 	private List<Par<Integer,Integer>> agua;
 
+	/**
+	 * Inicializa os atributos do novo objeto Regiao
+	 * @param nome
+	 * @param ultFogo
+	 * @param largura
+	 * @param altura
+	 * @param casas
+	 * @param estradas
+	 * @param agua
+	 */
 	public Regiao (String nome, Calendar ultFogo, int largura, int altura, List<Par<Integer,Integer>> casas,
 			List<Par<Integer,Integer>> estradas, List<Par<Integer,Integer>> agua) {
 		this.nome = nome;
@@ -32,10 +47,17 @@ public class Regiao {
 		}
 	}
 	
+	/**
+	 * Devolve o nome da Regiao
+	 */
 	private String nome() {
 		return this.nome;
 	}
 	
+	/**
+	 * Devolve o numero de elementos ardiveis da Regiao
+	 * @return count >= 0
+	 */
 	private int ardiveis() {
 		int count = 0;
 		//if casas ou terrenos ! EstadoAmbiente.ARDIDOS
@@ -44,12 +66,27 @@ public class Regiao {
 		return count;
 	}
 	
+	/**
+	 * Regista um (classe/objeto?) Fogo
+	 * @param data
+	 * @param sitios
+	 */
 	private void registaFogo(Calendar data, List<Par<Integer,Integer>> sitios) {
 		this.ultFogo = data; //<- duvidoso... criar classe Fogo?
 		// adicionar ao ambientes sitios ardidos (?)
 
 	}
 	
+	/**
+	 * Verifica se os dados da Regiao sao validos
+	 * @param largura
+	 * @param altura
+	 * @param casa
+	 * @param estradas
+	 * @param agua
+	 * @return true, se posicoes das casas, estradas e agua sao
+	 * corretas para um ambiente com a largura e altura dadas
+	 */
 	private static boolean dadosValidos(int largura, int altura, List<Par<Integer,Integer>> casa,
 			List<Par<Integer,Integer>> estradas, List<Par<Integer,Integer>> agua) {
 		boolean valid;
@@ -59,11 +96,23 @@ public class Regiao {
 		return valid;
 	}
 	
+	/**
+	 * Devolve a matriz da regiao em que os terrenos e casas nao
+	 * ardidos sao representados por LIVRE, e a agua, estradas e
+	 * os elementos ja ardidos sao representados por OBSTACULO
+	 * @return Array ...
+	 */
 	private EstadoSimulacao[][] alvoSimulacao() {
 		// (?)
 		return this.ambiente;
 	}
 	
+	/**
+	 * Devolve o nivel de perigo da Regiao
+	 * @param data
+	 * @param tempoLimites
+	 * @return
+	 */
 	private NivelPerigo nivelPerigo(Calendar data, int[] tempoLimites) {
 		int perigo; 
 		int difAno =  data.get(Calendar.YEAR) - this.ultFogo.get(Calendar.YEAR);
@@ -78,6 +127,10 @@ public class Regiao {
 		//continuar
 	}
 	
+	/**
+	 * Representacao textual da Regiao
+	 * @return
+	 */
 	private String toString() {
 		return "Nome: " + this.nome + " Data ult. fogo: " + this.ultFogo;
 		//falta a representacao da regiao

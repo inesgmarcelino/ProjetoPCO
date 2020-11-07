@@ -2,7 +2,7 @@ package ProjetoPCO;
 
 /**
  * Representa pares de objetos de tipos quaisquer
- * @author in
+ * @author in Grupo 17 - Francisco O (53340) & Sofia Lourenco (54950) & Ines Marcelino (54991)
  * @date Novembro 2020
  */
 public class Par<P,S> {
