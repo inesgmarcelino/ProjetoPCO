@@ -45,7 +45,7 @@ public class Regiao {
 	}
 	
 	private void registaFogo(Calendar data, List<Par<Integer,Integer>> sitios) {
-		this.ultFogo = data;
+		this.ultFogo = data; //<- duvidoso... criar classe Fogo?
 		// adicionar ao ambientes sitios ardidos (?)
 
 	}
@@ -74,6 +74,7 @@ public class Regiao {
 				perigo = tempoLimites.length;
 			}
 		}
+		//código acima pode ainda ter erros de interpretacao
 		//continuar
 	}
 	

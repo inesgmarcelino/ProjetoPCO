@@ -20,11 +20,16 @@ public class Instituicao {
 	
 	private void adicionaRegiao(String nome, Calendar ultFogo, int largura, int altura, List<Par<Integer,Integer>> casas,
 			List<Par<Integer,Integer>> estradas, List<Par<Integer,Integer>> agua) {
-		
+		//se não houver nenhuma regiao com este nome nesta instituicao
+		Regiao nova =  new Regiao(nome, ultFogo, largura, altura, casas, estradas, agua);
 	}
 	
 	private boolean existeRegiao(String nome) {
+		boolean existe;
+		//if existe uma regiao nesta instituicao que tenha esse nome
+		existe = true;
 		
+		return existe;
 	}
 	
 	private List<Par<Integer,Integer>> niveisDePerigo() {
@@ -36,14 +41,18 @@ public class Instituicao {
 	}
 	
 	private boolean podeAtuar() {
+		boolean atuar;
+		//if pelo menos uma reagiao da instituicao tem elementos ardiveis
+		atuar = true;
 		
+		return atuar;
 	}
 	
 	private void registaFogo(String regiao, Calendar data, List<Par<Integer,Integer>> sitios) {
-		
+		//mesma duvida de Regiao.java
 	}
 	
 	private String toString() {
-		
+		return "Designacao: " + this.designacao;
 	}
 }
