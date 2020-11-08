@@ -1,0 +1,123 @@
+Dados do ficheiro in1.txt VALIDOS
+Dados do ficheiro in2.txt VALIDOS
+Dados do ficheiro in3.txt INVALIDOS
+Dados do ficheiro in4.txt INVALIDOS
+***************************
+Designacao: Direcao Geral de Fogos
+Regiao maior perigo: 0
+-------- REGIOES -------
+Nivel perigo de fogo: AMARELO
+Nome: Amareleja  Data ult. fogo: 2017/2/4
+.~..
+.H..
+====
+...H
+...~
+--------------------
+***************************
+
+LIVRE  OBSTACULO  LIVRE  LIVRE  
+LIVRE  LIVRE  LIVRE  LIVRE  
+OBSTACULO  OBSTACULO  OBSTACULO  OBSTACULO  
+LIVRE  LIVRE  LIVRE  LIVRE  
+LIVRE  LIVRE  LIVRE  OBSTACULO  
+======
+
+AFETADO  OBSTACULO  LIVRE  LIVRE  
+LIVRE  LIVRE  LIVRE  LIVRE  
+OBSTACULO  OBSTACULO  OBSTACULO  OBSTACULO  
+LIVRE  LIVRE  LIVRE  LIVRE  
+LIVRE  LIVRE  LIVRE  OBSTACULO  
+======
+
+AFETADO  OBSTACULO  LIVRE  LIVRE  
+AFETADO  LIVRE  LIVRE  LIVRE  
+OBSTACULO  OBSTACULO  OBSTACULO  OBSTACULO  
+LIVRE  LIVRE  LIVRE  LIVRE  
+LIVRE  LIVRE  LIVRE  OBSTACULO  
+======
+
+AFETADO  OBSTACULO  LIVRE  LIVRE  
+AFETADO  AFETADO  AFETADO  AFETADO  
+OBSTACULO  OBSTACULO  OBSTACULO  OBSTACULO  
+LIVRE  LIVRE  LIVRE  LIVRE  
+LIVRE  LIVRE  LIVRE  OBSTACULO  
+======
+
+AFETADO  OBSTACULO  AFETADO  AFETADO  
+AFETADO  AFETADO  AFETADO  AFETADO  
+OBSTACULO  OBSTACULO  OBSTACULO  OBSTACULO  
+LIVRE  LIVRE  LIVRE  LIVRE  
+LIVRE  LIVRE  LIVRE  OBSTACULO  
+======
+
+***************************
+Designacao: Direcao Geral de Fogos
+Regiao maior perigo: 0
+-------- REGIOES -------
+Nivel perigo de fogo: VERDE
+Nome: Amareleja  Data ult. fogo: 2020/10/3
+!~!!
+!!!!
+====
+...H
+...~
+--------------------
+***************************
+
+***************************
+Designacao: Direcao Geral de Fogos
+Regiao maior perigo: 1
+-------- REGIOES -------
+Nivel perigo de fogo: VERDE
+Nome: Amareleja  Data ult. fogo: 2020/10/3
+!~!!
+!!!!
+====
+...H
+...~
+--------------------
+Nivel perigo de fogo: VERMELHO
+Nome: Regiao sem casas  Data ult. fogo: 2015/5/3
+.=..................
+..=.................
+...=................
+....=...............
+.....=..............
+......~~~~~~~.......
+.......~~~~~~~......
+........~~~~~~~.....
+.........=..........
+..........=.........
+--------------------
+***************************
+
+------- NIVEIS DE PERIGO --------
+Amareleja ---> VERDE
+Regiao sem casas ---> VERMELHO
+***************************
+Designacao: Direcao Geral de Fogos
+Regiao maior perigo: 0
+-------- REGIOES -------
+Nivel perigo de fogo: VERDE
+Nome: Amareleja  Data ult. fogo: 2020/10/3
+!~!!
+!!!!
+====
+...H
+...~
+--------------------
+Nivel perigo de fogo: VERDE
+Nome: Regiao sem casas  Data ult. fogo: 2020/10/3
+.=!!!!!!!!!!!!!!!!!!
+..=!!!!!!!!!!!!!!!!!
+...=!!!!!!!!!!!!!!!!
+....=!!!!!!!!!!!!!!!
+.....=!!!!!!!!!!!!!!
+......~~~~~~~!!!!!!!
+.......~~~~~~~!!!!!!
+........~~~~~~~!!!!!
+.........=!!!!!!!!!!
+..........=!!!!!!!!!
+--------------------
+***************************
