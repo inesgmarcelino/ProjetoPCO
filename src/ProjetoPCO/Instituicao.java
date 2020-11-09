@@ -19,6 +19,7 @@ public class Instituicao {
 	public static final int[] VENTOS_LIMITES = {0, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21};
 	
 	private String designacao;
+	private Regiao [] regioes;
 
 	/**
 	 * Inicializa os atributos do novo objeto Instituicao
@@ -26,6 +27,7 @@ public class Instituicao {
 	 */
 	public Instituicao(String designacao) {
 		this.designacao = designacao;
+		this.regioes = new Regiao [4]; //not sure
 	}
 	
 	/**
@@ -38,24 +40,29 @@ public class Instituicao {
 	 * @param estradas
 	 * @param agua
 	 */
-	private void adicionaRegiao(String nome, Calendar ultFogo, int largura, int altura, List<Par<Integer,Integer>> casas,
+	public void adicionaRegiao(String nome, Calendar ultFogo, int largura, int altura, List<Par<Integer,Integer>> casas,
 			List<Par<Integer,Integer>> estradas, List<Par<Integer,Integer>> agua) {
 		//se não houver nenhuma regiao com este nome nesta instituicao
-		Regiao nova =  new Regiao(nome, ultFogo, largura, altura, casas, estradas, agua);
+		Regiao novaRegiao =  new Regiao(nome, ultFogo, largura, altura, casas, estradas, agua);
+		
 	}
 	
-	/**
-	 * Verifica se existe alguma Regiao com esse nome na Instituicao
-	 * @param nome
-	 * @return true, se ja existir
-	 */
-	private boolean existeRegiao(String nome) {
-		boolean existe;
-		//if existe uma regiao nesta instituicao que tenha esse nome
-		existe = true;
-		
-		return existe;
-	}
+//	/**
+//	 * Verifica se existe alguma Regiao com esse nome na Instituicao
+//	 * @param nome
+//	 * @return true, se ja existir
+//	 */
+//	public boolean existeRegiao(String nome) {
+//		boolean existe = false;
+//		for(int i = 0; i < this.regioes.length; i++) {
+//			if(this.regioes[i].nome() == nome) {
+//				existe = true;
+//			} else {
+//				existe = false;
+//			}
+//		}
+//		return existe;
+//	}
 	
 	/**
 	 * Devolver os nomes e os niveis de perigo das regioes da Instituicao
@@ -69,23 +76,21 @@ public class Instituicao {
 	 * Devolve o alvo da simulacao da Regiao de maior nivel da Instituicao
 	 * @return Array ...
 	 */
-	private EstadoSimulacao[] alvoSimulacao() {
-		// (?)
-		return this.ambiente;
-	}
+//	private EstadoSimulacao[] alvoSimulacao() {
+//		// (?)
+//		return this.ambiente;
+//	}
 	
-	/**
-	 * Verifica se pelo menos uma Regiao da Instituicao tem elementos
-	 * ardiveis
-	 * @return true, se tiver
-	 */
-	private boolean podeAtuar() {
-		boolean atuar;
-		//if pelo menos uma reagiao da instituicao tem elementos ardiveis
-		atuar = true;
-		
-		return atuar;
-	}
+//	/**
+//	 * Verifica se pelo menos uma Regiao da Instituicao tem elementos
+//	 * ardiveis
+//	 * @return true, se tiver
+//	 */
+//	public boolean podeAtuar() {
+//		boolean atuar = false;
+//		
+//		return atuar;
+//	}
 	
 	/**
 	 * Regista um (classe/objeto?) Fogo
@@ -100,7 +105,7 @@ public class Instituicao {
 	/**
 	 * Representacao textual desta Instituicao
 	 */
-	private String toString() {
+	public String toString() {
 		return "Designacao: " + this.designacao;
 	}
 }

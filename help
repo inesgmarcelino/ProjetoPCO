@@ -1,2 +1,10 @@
 PCOFase2:
-ESCREVER NOTAS IMPORTANTES SOBRE O PROJETO (interpretacao, etc.)
+
+interpretacao dos inputs:
+Amareleja 										-> nome da Regiao
+2017 2 4										-> data do ultimo fogo
+5												-> largura da Regiao
+4												-> altura da Regiao
+1 1 3 3 		-> [(1,1),(3,3)]				-> casas
+2 0 2 1 2 2 2 3 -> [(2,0),(2,1),(2,2),(2,3)]	-> estradas
+0 1 4 3 		-> [(0,1),(4,3)]				-> agua

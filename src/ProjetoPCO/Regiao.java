@@ -35,22 +35,16 @@ public class Regiao {
 			List<Par<Integer,Integer>> estradas, List<Par<Integer,Integer>> agua) {
 		this.nome = nome;
 		this.ultFogo = ultFogo;
-		this.ambiente = new Regiao[altura][largura]; //not sure
 		this.casas = casas;
 		this.estradas = estradas;
 		this.agua = agua;
-		
-		for (int i = 0; i < this.ambiente.length; i++) {
-			for (int j = 0; j < this.ambiente[i].length; j++) {
-				// meter as casas, estradas e agua nas suas posicoes em ambiente (?)
-			}
-		}
+		// por acabar
 	}
 	
 	/**
 	 * Devolve o nome da Regiao
 	 */
-	private String nome() {
+	public String nome() {
 		return this.nome;
 	}
 	
@@ -81,19 +75,41 @@ public class Regiao {
 	 * Verifica se os dados da Regiao sao validos
 	 * @param largura
 	 * @param altura
-	 * @param casa
+	 * @param casas
 	 * @param estradas
 	 * @param agua
 	 * @return true, se posicoes das casas, estradas e agua sao
 	 * corretas para um ambiente com a largura e altura dadas
 	 */
-	private static boolean dadosValidos(int largura, int altura, List<Par<Integer,Integer>> casa,
+	public static boolean dadosValidos(int largura, int altura, List<Par<Integer,Integer>> casas,
 			List<Par<Integer,Integer>> estradas, List<Par<Integer,Integer>> agua) {
-		boolean valid;
-		//if posições das casas, estradas, agua forem compativeis com a dimensão do ambiente
-		valid = true;
 		
-		return valid;
+		boolean validCasas = true, validEstradas = true, validAgua = true;
+		
+		for(int i = 0; i < casas.size(); i++) {
+			if(casas.get(i).primeiro() < largura && casas.get(i).segundo() < altura) {
+				validCasas = true;
+			} else {
+				validCasas = false;
+			}
+		}
+		
+		for(int i = 0; i < estradas.size(); i++) {
+			if(estradas.get(i).primeiro() < largura && estradas.get(i).segundo() < altura) {
+				validEstradas = true;
+			} else {
+				validEstradas = false;
+			}
+		}
+		
+		for(int i = 0; i < agua.size(); i++) {
+			if(agua.get(i).primeiro() < largura && agua.get(i).segundo() < altura) {
+				validAgua = true;
+			} else {
+				validAgua = false;
+			}
+		}
+		return validCasas && validEstradas && validAgua;
 	}
 	
 	/**
