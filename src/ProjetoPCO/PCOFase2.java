@@ -141,7 +141,7 @@ public class PCOFase2 {
 		Calendar result = Calendar.getInstance(); 
 		// ano, mes, dia
 		result.set(Integer.parseInt(valores[0]), 
-				Integer.parseInt(valores[1]),
+				Integer.parseInt(valores[1]) - 1,
 				Integer.parseInt(valores[2]));
 		return result;
 	}

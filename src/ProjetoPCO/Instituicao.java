@@ -19,7 +19,8 @@ public class Instituicao {
 	public static final int[] VENTOS_LIMITES = {0, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21};
 	
 	private String designacao;
-	private Regiao [] regioes;
+	private Regiao[] regioes;
+	private EstadoSimulacao[][] ambiente;
 
 	/**
 	 * Inicializa os atributos do novo objeto Instituicao
@@ -76,7 +77,7 @@ public class Instituicao {
 	 * Devolve o alvo da simulacao da Regiao de maior nivel da Instituicao
 	 * @return Array ...
 	 */
-//	private EstadoSimulacao[] alvoSimulacao() {
+//	public EstadoSimulacao[][] alvoSimulacao() {
 //		// (?)
 //		return this.ambiente;
 //	}
