@@ -36,9 +36,9 @@ public class PCOFase2 {
 		lerCriarInserirRegiao("in1.txt", meuDGF);
 		System.out.println(meuDGF.toString());		
 
-//		if(!meuDGF.existeRegiao("Amareleja")) {
-//			System.out.println("Erro inserir regiao");
-//		}
+		if(!meuDGF.existeRegiao("Amareleja")) {
+			System.out.println("Erro inserir regiao");
+		}
 //
 //		if(!meuDGF.podeAtuar()) {
 //			System.out.println("Erro pode atuar");

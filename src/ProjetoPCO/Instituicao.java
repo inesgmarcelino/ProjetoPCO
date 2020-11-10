@@ -21,6 +21,7 @@ public class Instituicao {
 	private String designacao;
 	private Regiao[] regioes;
 	private EstadoSimulacao[][] ambiente;
+	private int quantasRegioes;
 
 	/**
 	 * Inicializa os atributos do novo objeto Instituicao
@@ -44,26 +45,32 @@ public class Instituicao {
 	public void adicionaRegiao(String nome, Calendar ultFogo, int largura, int altura, List<Par<Integer,Integer>> casas,
 			List<Par<Integer,Integer>> estradas, List<Par<Integer,Integer>> agua) {
 		//se não houver nenhuma regiao com este nome nesta instituicao
-		Regiao novaRegiao =  new Regiao(nome, ultFogo, largura, altura, casas, estradas, agua);
+		
+//		for (int i = 0; i < this.regioes.length; i++) {
+//			if (this.regioes[i] == null) {
+//				this.regioes[i] =  new Regiao(nome, ultFogo, largura, altura, casas, estradas, agua);
+//			}
+//		} -> está a adicionar a todos os lugares da lista de regioes
+		
 		
 	}
 	
-//	/**
-//	 * Verifica se existe alguma Regiao com esse nome na Instituicao
-//	 * @param nome
-//	 * @return true, se ja existir
-//	 */
-//	public boolean existeRegiao(String nome) {
-//		boolean existe = false;
-//		for(int i = 0; i < this.regioes.length; i++) {
-//			if(this.regioes[i].nome() == nome) {
-//				existe = true;
-//			} else {
-//				existe = false;
-//			}
-//		}
-//		return existe;
-//	}
+	/**
+	 * Verifica se existe alguma Regiao com esse nome na Instituicao
+	 * @param nome
+	 * @return true, se ja existir
+	 */
+	public boolean existeRegiao(String nome) {
+		boolean existe = false;
+		for(int i = 0; i < this.regioes.length; i++) {
+			if(this.regioes[i].nome() == nome) {
+				existe = true;
+			} else {
+				existe = false;
+			}
+		}
+		return existe; // não está correto
+	}
 	
 	/**
 	 * Devolver os nomes e os niveis de perigo das regioes da Instituicao
