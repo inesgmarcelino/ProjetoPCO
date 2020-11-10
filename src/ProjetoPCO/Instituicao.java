@@ -44,13 +44,12 @@ public class Instituicao {
 	 */
 	public void adicionaRegiao(String nome, Calendar ultFogo, int largura, int altura, List<Par<Integer,Integer>> casas,
 			List<Par<Integer,Integer>> estradas, List<Par<Integer,Integer>> agua) {
-		//se não houver nenhuma regiao com este nome nesta instituicao
 		
-//		for (int i = 0; i < this.regioes.length; i++) {
-//			if (this.regioes[i] == null) {
-//				this.regioes[i] =  new Regiao(nome, ultFogo, largura, altura, casas, estradas, agua);
-//			}
-//		} -> está a adicionar a todos os lugares da lista de regioes
+		for (int i = 0; i < this.regioes.length; i++) {
+			if (this.regioes[i] == null) {
+				this.regioes[i] =  new Regiao(nome, ultFogo, largura, altura, casas, estradas, agua);
+			}
+		} //-> está a adicionar a todos os lugares da lista de regioes
 		
 		
 	}
