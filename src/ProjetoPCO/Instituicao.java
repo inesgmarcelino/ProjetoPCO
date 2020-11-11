@@ -50,7 +50,10 @@ public class Instituicao {
 				this.regioes[i] =  new Regiao(nome, ultFogo, largura, altura, casas, estradas, agua);
 			}
 		} //-> está a adicionar a todos os lugares da lista de regioes
-		
+//		System.out.println(this.regioes[0].nome());
+//		System.out.println(this.regioes[1].nome());
+//		System.out.println(this.regioes[2].nome());
+//		System.out.println(this.regioes[3].nome());
 		
 	}
 	
@@ -62,7 +65,7 @@ public class Instituicao {
 	public boolean existeRegiao(String nome) {
 		boolean existe = false;
 		for(int i = 0; i < this.regioes.length; i++) {
-			if(this.regioes[i].nome() == nome) {
+			if(nome.equals(this.regioes[i].nome())) { 
 				existe = true;
 			} else {
 				existe = false;
@@ -88,16 +91,20 @@ public class Instituicao {
 //		return this.ambiente;
 //	}
 	
-//	/**
-//	 * Verifica se pelo menos uma Regiao da Instituicao tem elementos
-//	 * ardiveis
-//	 * @return true, se tiver
-//	 */
-//	public boolean podeAtuar() {
-//		boolean atuar = false;
-//		
-//		return atuar;
-//	}
+	/**
+	 * Verifica se pelo menos uma Regiao da Instituicao tem elementos
+	 * ardiveis
+	 * @return true, se tiver
+	 */
+	public boolean podeAtuar() {
+		boolean atuar = false;
+		for(int i = 0; i < this.regioes.length; i++) {
+			if(this.regioes[i].ardiveis() == true) {
+				
+			}
+		}
+		return atuar;
+	}
 	
 	/**
 	 * Regista um (classe/objeto?) Fogo

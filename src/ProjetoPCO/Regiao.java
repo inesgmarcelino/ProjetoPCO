@@ -52,7 +52,7 @@ public class Regiao {
 	 * Devolve o numero de elementos ardiveis da Regiao
 	 * @return count >= 0
 	 */
-	private int ardiveis() {
+	public int ardiveis() {
 		int count = 0;
 		//if casas ou terrenos ! EstadoAmbiente.ARDIDOS
 		// count += 1
