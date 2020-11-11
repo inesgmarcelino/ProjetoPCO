@@ -86,10 +86,12 @@ public class Instituicao {
 	 * Devolve o alvo da simulacao da Regiao de maior nivel da Instituicao
 	 * @return Array ...
 	 */
-//	public EstadoSimulacao[][] alvoSimulacao() {
-//		// (?)
-//		return this.ambiente;
-//	}
+	public EstadoSimulacao[][] alvoSimulacao() {
+		for (int i = 0; i < this.regioes.length; i++) {
+			
+		}
+		return [Regiao.alvoSimulacao()];
+	}
 	
 	/**
 	 * Verifica se pelo menos uma Regiao da Instituicao tem elementos
@@ -99,8 +101,10 @@ public class Instituicao {
 	public boolean podeAtuar() {
 		boolean atuar = false;
 		for(int i = 0; i < this.regioes.length; i++) {
-			if(this.regioes[i].ardiveis() == true) {
-				
+			if(this.regioes[i].ardiveis() > 0) {
+				atuar = true;
+			} else {
+				atuar = false;
 			}
 		}
 		return atuar;

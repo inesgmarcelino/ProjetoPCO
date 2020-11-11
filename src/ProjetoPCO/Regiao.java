@@ -54,9 +54,9 @@ public class Regiao {
 	 */
 	public int ardiveis() {
 		int count = 0;
-		//if casas ou terrenos ! EstadoAmbiente.ARDIDOS
-		// count += 1
+		if (this.casas != null && this.estradas != null ) {
 		
+		}
 		return count;
 	}
 	
@@ -118,7 +118,7 @@ public class Regiao {
 	 * os elementos ja ardidos sao representados por OBSTACULO
 	 * @return Array ...
 	 */
-	private EstadoSimulacao[][] alvoSimulacao() {
+	public EstadoSimulacao[][] alvoSimulacao() {
 		// (?)
 		return this.ambiente;
 	}

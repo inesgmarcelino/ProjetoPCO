@@ -39,15 +39,16 @@ public class PCOFase2 {
 		if(!meuDGF.existeRegiao("Amareleja")) {
 			System.out.println("Erro inserir regiao");
 		}
-//
-//		if(!meuDGF.podeAtuar()) {
-//			System.out.println("Erro pode atuar");
-//		}
+		
+		// metodo ardiveis da classe Regiao está com count = 0 dá false
+		if(!meuDGF.podeAtuar()) {
+			System.out.println("Erro pode atuar");
+		}
 
-//		// Pede ao meuDGF o alvo para a simulacao (que sera' a 
-//		// regiao com maior perigo de fogo
-//		EstadoSimulacao[][] alvo = meuDGF.alvoSimulacao();
-//
+		// Pede ao meuDGF o alvo para a simulacao (que sera' a 
+		// regiao com maior perigo de fogo
+		EstadoSimulacao[][] alvo = meuDGF.alvoSimulacao();
+
 //		// Cria um simulador dando-lhe esse alvo para trabalhar
 //		// define o ponto de ignicao e faz 3 passos de simulacao
 //		// No fim usa o resultado da simulacao para registar um fogo
