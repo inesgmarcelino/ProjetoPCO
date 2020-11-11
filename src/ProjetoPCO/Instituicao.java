@@ -19,7 +19,7 @@ public class Instituicao {
 	public static final int[] VENTOS_LIMITES = {0, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21};
 	
 	private String designacao;
-	private Regiao[] regioes;
+	private Regiao[] regioes = new Regiao[4]; //not sure
 	private int quantasRegioes;
 
 	/**
@@ -28,7 +28,6 @@ public class Instituicao {
 	 */
 	public Instituicao(String designacao) {
 		this.designacao = designacao;
-		this.regioes = new Regiao [4]; //not sure
 	}
 	
 	/**
@@ -70,14 +69,14 @@ public class Instituicao {
 				existe = false;
 			}
 		}
-		return existe; // não está correto
+		return existe;
 	}
 	
 	/**
 	 * Devolver os nomes e os niveis de perigo das regioes da Instituicao
 	 * @return Informacao pedida numa lista de pares (int,int)
 	 */
-	private List<Par<Integer,Integer>> niveisDePerigo() {
+	private List<Par<String,NivelPerigo>> niveisDePerigo() {
 		
 	}
 	
@@ -111,7 +110,7 @@ public class Instituicao {
 	}
 	
 	/**
-	 * Regista um (classe/objeto?) Fogo
+	 * Regista um Fogo
 	 * @param regiao
 	 * @param data
 	 * @param sitios

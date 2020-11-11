@@ -67,8 +67,8 @@ public class Regiao {
 	 * @param sitios
 	 */
 	private void registaFogo(Calendar data, List<Par<Integer,Integer>> sitios) {
-		this.ultFogo = data; //<- duvidoso... criar classe Fogo?
-		// adicionar ao ambientes sitios ardidos (?)
+		this.ultFogo = data;
+		// adicionar ao ambientes sitios ardidos 
 
 	}
 	
