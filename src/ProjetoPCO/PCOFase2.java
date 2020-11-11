@@ -48,8 +48,8 @@ public class PCOFase2 {
 		// Pede ao meuDGF o alvo para a simulacao (que sera' a 
 		// regiao com maior perigo de fogo
 		EstadoSimulacao[][] alvo = meuDGF.alvoSimulacao();
-
-//		// Cria um simulador dando-lhe esse alvo para trabalhar
+		
+		// Cria um simulador dando-lhe esse alvo para trabalhar
 //		// define o ponto de ignicao e faz 3 passos de simulacao
 //		// No fim usa o resultado da simulacao para registar um fogo
 //		// no meuDGF

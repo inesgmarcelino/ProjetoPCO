@@ -16,7 +16,7 @@ public class Regiao {
 	
 	private String nome;
 	private Calendar ultFogo;
-	private EstadoSimulacao[][] ambiente; //not sure
+	private Regiao[][] regiao; //not sure
 	private List<Par<Integer,Integer>> casas;
 	private List<Par<Integer,Integer>> estradas;
 	private List<Par<Integer,Integer>> agua;
@@ -38,7 +38,8 @@ public class Regiao {
 		this.casas = casas;
 		this.estradas = estradas;
 		this.agua = agua;
-		// por acabar
+		this.regiao = new Regiao[largura][altura];
+		
 	}
 	
 	/**
@@ -54,9 +55,9 @@ public class Regiao {
 	 */
 	public int ardiveis() {
 		int count = 0;
-		if (this.casas != null && this.estradas != null ) {
-		
-		}
+//		if (this.casas != null && this.estradas != null ) {
+//			
+//		}
 		return count;
 	}
 	
@@ -119,8 +120,31 @@ public class Regiao {
 	 * @return Array ...
 	 */
 	public EstadoSimulacao[][] alvoSimulacao() {
-		// (?)
-		return this.ambiente;
+		EstadoSimulacao[][] alvo = new EstadoSimulacao[this.regiao.length - 1][this.regiao[0].length -1];
+		
+		for (int i = 0; i < this.regiao.length; i++) {
+			for (int j = 0; j < this.regiao[i].length; j++) {
+				for (int c = 0; c < this.casas.size(); c++) {
+					if (i == this.casas.get(c).primeiro() && j == this.casas.get(c).segundo()) {
+						alvo[i][j] = EstadoSimulacao.LIVRE;
+					}
+				}
+				for (int e = 0; e < this.estradas.size(); e++) {
+					if (i == this.estradas.get(e).primeiro() && j == this.estradas.get(e).segundo()) {
+						alvo[i][j] = EstadoSimulacao.OBSTACULO;
+					}
+				}
+				for (int a = 0; a < this.agua.size(); a++) {
+					if (i == this.agua.get(a).primeiro() && j == this.agua.get(a).segundo()) {
+						alvo[i][j] = EstadoSimulacao.OBSTACULO;
+					}
+				}
+				if (alvo[i][j] == null) {
+					alvo[i][j] = EstadoSimulacao.LIVRE;
+				}
+			}
+		}
+		return alvo;
 	}
 	
 	/**

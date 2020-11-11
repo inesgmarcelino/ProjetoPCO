@@ -20,7 +20,6 @@ public class Instituicao {
 	
 	private String designacao;
 	private Regiao[] regioes;
-	private EstadoSimulacao[][] ambiente;
 	private int quantasRegioes;
 
 	/**
@@ -87,10 +86,11 @@ public class Instituicao {
 	 * @return Array ...
 	 */
 	public EstadoSimulacao[][] alvoSimulacao() {
+		EstadoSimulacao[][] alvo = this.regioes[0].alvoSimulacao();
 		for (int i = 0; i < this.regioes.length; i++) {
-			
+			alvo = this.regioes[i].alvoSimulacao();
 		}
-		return [Regiao.alvoSimulacao()];
+		return alvo;
 	}
 	
 	/**
