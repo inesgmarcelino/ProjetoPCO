@@ -33,8 +33,7 @@ public class PCOFase2 {
 		// Constroi uma instancia de Instituicao
 		Instituicao meuDGF = new Instituicao("Direcao Geral de Fogos");
 		//Ler informacao de uma regiao e acrescenta-la ao meuDGF
-		lerCriarInserirRegiao("in1.txt", meuDGF);
-		System.out.println(meuDGF.toString());		
+		lerCriarInserirRegiao("in1.txt", meuDGF);	
 
 		if(!meuDGF.existeRegiao("Amareleja")) {
 			System.out.println("Erro inserir regiao");
@@ -53,21 +52,21 @@ public class PCOFase2 {
 		// define o ponto de ignicao e faz 3 passos de simulacao
 		// No fim usa o resultado da simulacao para registar um fogo
 		// no meuDGF
-		Simulador meuSimulador1 = new Simulador(alvo);
-		System.out.println(meuSimulador1.representacaoAmbiente());
-		meuSimulador1.afetarElemento(0, 0);
-		System.out.println(meuSimulador1.representacaoAmbiente());
-
-		meuSimulador1.passoSimulacao("N", 3, Instituicao.VENTOS_LIMITES);
-		System.out.println(meuSimulador1.representacaoAmbiente());
-		meuSimulador1.passoSimulacao("O", 5, Instituicao.VENTOS_LIMITES);
-		System.out.println(meuSimulador1.representacaoAmbiente());
-		meuSimulador1.passoSimulacao("S", 3, Instituicao.VENTOS_LIMITES);
-		System.out.println(meuSimulador1.representacaoAmbiente());
-
-		List<Par<Integer,Integer>> afetados = meuSimulador1.resultadoSimulacao();
-		meuDGF.registaFogo("Amareleja", Calendar.getInstance(), afetados);
-		System.out.println(meuDGF.toString());
+//		Simulador meuSimulador1 = new Simulador(alvo);
+//		System.out.println(meuSimulador1.representacaoAmbiente());
+//		meuSimulador1.afetarElemento(0, 0);
+//		System.out.println(meuSimulador1.representacaoAmbiente());
+//
+//		meuSimulador1.passoSimulacao("N", 3, Instituicao.VENTOS_LIMITES);
+//		System.out.println(meuSimulador1.representacaoAmbiente());
+//		meuSimulador1.passoSimulacao("O", 5, Instituicao.VENTOS_LIMITES);
+//		System.out.println(meuSimulador1.representacaoAmbiente());
+//		meuSimulador1.passoSimulacao("S", 3, Instituicao.VENTOS_LIMITES);
+//		System.out.println(meuSimulador1.representacaoAmbiente());
+//
+//		List<Par<Integer,Integer>> afetados = meuSimulador1.resultadoSimulacao();
+//		meuDGF.registaFogo("Amareleja", Calendar.getInstance(), afetados);
+//		System.out.println(meuDGF.toString());
 //
 //		// Acrescentar uma segunda regiao e simular um fogo sobre
 //		// o novo alvo. No fim regista o resultado da simulacao como
