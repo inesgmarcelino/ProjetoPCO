@@ -20,7 +20,6 @@ public class Instituicao {
 	
 	private String designacao;
 	private Regiao[] regioes = new Regiao[4]; //not sure
-	private int quantasRegioes;
 
 	/**
 	 * Inicializa os atributos do novo objeto Instituicao
@@ -46,12 +45,9 @@ public class Instituicao {
 		for (int i = 0; i < this.regioes.length; i++) {
 			if (this.regioes[i] == null) {
 				this.regioes[i] =  new Regiao(nome, ultFogo, largura, altura, casas, estradas, agua);
+				break;
 			}
 		} //-> está a adicionar a todos os lugares da lista de regioes
-//		System.out.println(this.regioes[0].nome());
-//		System.out.println(this.regioes[1].nome());
-//		System.out.println(this.regioes[2].nome());
-//		System.out.println(this.regioes[3].nome());
 		
 	}
 	
@@ -62,7 +58,7 @@ public class Instituicao {
 	 */
 	public boolean existeRegiao(String nome) {
 		boolean existe = false;
-		for(int i = 0; i < this.regioes.length; i++) {
+		for(int i = 0; i < this.regioes.length && existe != true; i++) {
 			if(nome.equals(this.regioes[i].nome())) { 
 				existe = true;
 			} else {
@@ -79,14 +75,14 @@ public class Instituicao {
 	private List<Par<String,NivelPerigo>> niveisDePerigo() {
 		
 	}
-	
+	//ATENCAO! AQUI TEM QUE SER DEVOLVIDO A REGIAO COM MAIOR NIVEL DE PERIGO
 	/**
 	 * Devolve o alvo da simulacao da Regiao de maior nivel da Instituicao
 	 * @return Array ...
 	 */
 	public EstadoSimulacao[][] alvoSimulacao() {
-		EstadoSimulacao[][] alvo = this.regioes[0].alvoSimulacao();
-		for (int i = 0; i < this.regioes.length; i++) {
+		EstadoSimulacao[][] alvo = null;
+		for (int i = 0; i < this.regioes.length && this.regioes[i] != null; i++) {
 			alvo = this.regioes[i].alvoSimulacao();
 		}
 		return alvo;
@@ -99,7 +95,7 @@ public class Instituicao {
 	 */
 	public boolean podeAtuar() {
 		boolean atuar = false;
-		for(int i = 0; i < this.regioes.length; i++) {
+		for(int i = 0; i < this.regioes.length && this.regioes[i] != null; i++) {
 			if(this.regioes[i].ardiveis() > 0) {
 				atuar = true;
 			} else {
@@ -115,14 +111,26 @@ public class Instituicao {
 	 * @param data
 	 * @param sitios
 	 */
-	private void registaFogo(String regiao, Calendar data, List<Par<Integer,Integer>> sitios) {
-		//mesma duvida de Regiao.java
+	public void registaFogo(String regiao, Calendar data, List<Par<Integer,Integer>> sitios) {
+		for (int i = 0; i < this.regioes.length && this.regioes[i] != null; i++) {
+			if (this.regioes[i].nome() == regiao) {
+				this.regioes[i].registaFogo(data, sitios);
+			}
+		}
 	}
 	
 	/**
 	 * Representacao textual desta Instituicao
 	 */
 	public String toString() {
-		return "Designacao: " + this.designacao;
+		StringBuilder result = new StringBuilder();
+		result.append("Designacao: " + this.designacao + "\n");
+		for (int i = 0; i < this.regioes.length; i++) {
+			result.append("Nome: " + this.regioes[i].nome());
+			for (int j = 0; j < this.regioes[i].; j++) {
+				result.append("")
+			}
+		}
+		return result.toString();
 	}
 }
