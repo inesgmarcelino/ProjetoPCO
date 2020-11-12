@@ -73,7 +73,8 @@ public class Instituicao {
 	 */
 	public EstadoSimulacao[][] alvoSimulacao() {
 		Regiao rMaiorPerigo = this.regioes.get(0);
-		//NivelPerigo maiorPerigo = rMaiorPerigo.nivelPerigo();
+		//
+		for (Regiao r: this.regioes) {
 		// tem que devolver 
 		
 		return alvo;
