@@ -67,40 +67,40 @@ public class PCOFase2 {
 		List<Par<Integer,Integer>> afetados = meuSimulador1.resultadoSimulacao();
 		meuDGF.registaFogo("Amareleja", Calendar.getInstance(), afetados);
 		System.out.println(meuDGF.toString());
-//
-//		// Acrescentar uma segunda regiao e simular um fogo sobre
-//		// o novo alvo. No fim regista o resultado da simulacao como
-//		// fogo no meuDGF
-//		lerCriarInserirRegiao("in2.txt", meuDGF);
-//		System.out.println(meuDGF.toString());
-////
-////		// Quais os niveis de perigo das regioes?
-//		List<Par<String,NivelPerigo>> niveisDePerigo = meuDGF.niveisDePerigo();
-//		System.out.println("------- NIVEIS DE PERIGO --------");
-//		for(Par<String,NivelPerigo> p : niveisDePerigo) {
-//			System.out.println(p.primeiro() + " ---> " + p.segundo());
-//		}
-////
-////		// Pede o novo alvo de simulacao 'a instituicao
-//		alvo = meuDGF.alvoSimulacao();
-//		
-////
-////		// Cria um novo simulador, afeta um elemento onde vai começar 
-////		// o fogo e faz simulacao 
-//		Simulador meuSimulador2 = new Simulador(alvo);
-//		meuSimulador2.afetarElemento(9, 19);
-//
-//		meuSimulador2.passoSimulacao("S", 17, Instituicao.VENTOS_LIMITES);
-//		meuSimulador2.passoSimulacao("E", 21, Instituicao.VENTOS_LIMITES);
-//		meuSimulador2.passoSimulacao("E", 21, Instituicao.VENTOS_LIMITES);
-//		meuSimulador2.passoSimulacao("N", 17, Instituicao.VENTOS_LIMITES);
-//
-//		// Regista um fogo usando os resultados da simulacao
-//		afetados = meuSimulador2.resultadoSimulacao();
-//		meuDGF.registaFogo("Regiao sem casas", Calendar.getInstance(), afetados);
-//		System.out.println(meuDGF.toString());
-//
-//
+
+		// Acrescentar uma segunda regiao e simular um fogo sobre
+		// o novo alvo. No fim regista o resultado da simulacao como
+		// fogo no meuDGF
+		lerCriarInserirRegiao("in2.txt", meuDGF);
+		System.out.println(meuDGF.toString());
+
+		// Quais os niveis de perigo das regioes?
+		List<Par<String,NivelPerigo>> niveisDePerigo = meuDGF.niveisDePerigo();
+		System.out.println("------- NIVEIS DE PERIGO --------");
+		for(Par<String,NivelPerigo> p : niveisDePerigo) {
+			System.out.println(p.primeiro() + " ---> " + p.segundo());
+		}
+
+		// Pede o novo alvo de simulacao 'a instituicao
+		alvo = meuDGF.alvoSimulacao();
+		
+
+		// Cria um novo simulador, afeta um elemento onde vai começar 
+		// o fogo e faz simulacao 
+		Simulador meuSimulador2 = new Simulador(alvo);
+		meuSimulador2.afetarElemento(9, 19);
+
+		meuSimulador2.passoSimulacao("S", 17, Instituicao.VENTOS_LIMITES);
+		meuSimulador2.passoSimulacao("E", 21, Instituicao.VENTOS_LIMITES);
+		meuSimulador2.passoSimulacao("E", 21, Instituicao.VENTOS_LIMITES);
+		meuSimulador2.passoSimulacao("N", 17, Instituicao.VENTOS_LIMITES);
+
+		// Regista um fogo usando os resultados da simulacao
+		afetados = meuSimulador2.resultadoSimulacao();
+		meuDGF.registaFogo("Regiao sem casas", Calendar.getInstance(), afetados);
+		System.out.println(meuDGF.toString());
+
+
 	} // Fim do metodo main
 //
 	/**
@@ -176,7 +176,7 @@ public class PCOFase2 {
 	 */
 	private static void testarInfoValida() throws FileNotFoundException {
 		// para cada um dos 4 ficheiros in1.txt ate' in4.txt
-		for(int i = 1 ; i < 2 ; i++) {
+		for(int i = 1 ; i <= 4 ; i++) {
 			Scanner leitor = new Scanner(new FileReader("in" + i + ".txt"));
 
 			// Consome a linha correspondente ao nome

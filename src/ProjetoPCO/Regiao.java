@@ -194,14 +194,17 @@ public class Regiao {
 	 * @return
 	 */
 	public NivelPerigo nivelPerigo(Calendar data, int[] tempoLimites) {
-		NivelPerigo result = NivelPerigo.VERDE;
-		int difAno =  data.get(Calendar.YEAR) - this.ultFogo.get(Calendar.YEAR);
-		int nivel = 0;
-		for (int i = 0; i < tempoLimites.length && i < tempoLimites.length && i - 1 >= 0; i++) {
-			if (tempoLimites[i - 1] < difAno && difAno <= tempoLimites[i]) {
-				nivel = i;
-			} else if (tempoLimites[tempoLimites.length - 1] < difAno) {
-				nivel = tempoLimites.length;
+		int perigo = 0;
+		int difAno = data.get(Calendar.YEAR) - this.ultFogo.get(Calendar.YEAR);
+		if (difAno <= tempoLimites[0]) {
+			perigo = 0;
+		} else {
+			for (int i = 1; i < tempoLimites.length; i++) {
+				if (tempoLimites[i - 1] < difAno && tempoLimites[i] >= difAno) {
+					perigo = i;
+				} else if (tempoLimites[tempoLimites.length - 1] < difAno) {
+					perigo = NivelPerigo.values()[NivelPerigo.values().length - 1].ordinal();
+				}
 			}
 		}
 		int obstaculos = 0;
@@ -214,13 +217,12 @@ public class Regiao {
 		}
 		
 		int quociente = (this.ardiveis() - obstaculos) / (this.regiao.length * this.regiao[0].length);
-		nivel *= (1 + quociente);
+		perigo *= (1 + quociente);
 		
-		if (Math.round(nivel) >= NivelPerigo.values().length) {
-			result = NivelPerigo.values()[NivelPerigo.values().length - 1];
+		if (Math.round(perigo) >= NivelPerigo.values().length) {
+			perigo = NivelPerigo.values()[NivelPerigo.values().length - 1].ordinal();
 		}
-		
-		return result;
+		return NivelPerigo.values()[perigo];
 	}
 	
 	/**

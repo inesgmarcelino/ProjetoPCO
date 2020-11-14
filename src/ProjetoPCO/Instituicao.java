@@ -84,18 +84,21 @@ public class Instituicao {
 	 */
 	public EstadoSimulacao[][] alvoSimulacao() {
 		List<Par<String,NivelPerigo>> listaPerigo = niveisDePerigo();
-		NivelPerigo perigo = NivelPerigo.VERDE;	
-		int i = 0;
-		for (Par<String,NivelPerigo> lista: listaPerigo) {
-			if (lista.segundo().ordinal() > perigo.ordinal()) {
-				for (int j = 0; j < this.regioes.size(); j++) {
-					if (lista.primeiro().equals(this.regioes.get(j).nome())) {
-						i = j;
-					}
-				}
+		String nomeRegMaiorPerigo = null;
+		int indexMaiorPerigo = 0;
+		int indexReg = 0;
+		for (int i = 0; i < listaPerigo.size(); i++) {
+			if (listaPerigo.get(i).segundo().ordinal() > indexMaiorPerigo) {
+				indexMaiorPerigo = listaPerigo.get(i).segundo().ordinal();
+				nomeRegMaiorPerigo = listaPerigo.get(i).primeiro();
 			}
 		}
-		return this.regioes.get(i).alvoSimulacao();
+		for (int i = 0; i < this.regioes.size(); i++) {
+			if (this.regioes.get(i).nome() == nomeRegMaiorPerigo) {
+				indexReg = i;
+			}
+		}
+		return this.regioes.get(indexReg).alvoSimulacao();
 	}
 	
 	/**
