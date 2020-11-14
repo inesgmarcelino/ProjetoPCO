@@ -64,23 +64,20 @@ public class Instituicao {
 	 * Devolver os nomes e os niveis de perigo das regioes da Instituicao
 	 * @return Informacao pedida numa lista de pares (int,int)
 	 */
-	private List<Par<String,NivelPerigo>> niveisDePerigo() {
+	public List<Par<String,NivelPerigo>> niveisDePerigo() {
 		List<Par<String,NivelPerigo>> listaNiveis = null;
-		Par<String,NivelPerigo> nivelRegiao = null;
-		Calendar now = Calendar.
+		Calendar now = Calendar.getInstance();
 		
 		for (Regiao r: this.regioes) {
 			String p = r.nome();
 			NivelPerigo s = r.nivelPerigo(now, RISCO_ANOS);
+			Par<String,NivelPerigo> nivelRegiao = new Par<String,NivelPerigo>(p,s);
 			
-			nivelRegiao = new Par<p,s>;
 			listaNiveis.add(nivelRegiao);
 		}
-		
-		
+		return listaNiveis;
 	}
 		
-	}
 	//ATENCAO! AQUI TEM QUE SER DEVOLVIDO A REGIAO COM MAIOR NIVEL DE PERIGO
 	/**
 	 * Devolve o alvo da simulacao da Regiao de maior nivel da Instituicao
