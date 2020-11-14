@@ -2,6 +2,7 @@ package ProjetoPCO;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -64,6 +65,20 @@ public class Instituicao {
 	 * @return Informacao pedida numa lista de pares (int,int)
 	 */
 	private List<Par<String,NivelPerigo>> niveisDePerigo() {
+		List<Par<String,NivelPerigo>> listaNiveis = null;
+		Par<String,NivelPerigo> nivelRegiao = null;
+		Calendar now = Calendar.
+		
+		for (Regiao r: this.regioes) {
+			String p = r.nome();
+			NivelPerigo s = r.nivelPerigo(now, RISCO_ANOS);
+			
+			nivelRegiao = new Par<p,s>;
+			listaNiveis.add(nivelRegiao);
+		}
+		
+		
+	}
 		
 	}
 	//ATENCAO! AQUI TEM QUE SER DEVOLVIDO A REGIAO COM MAIOR NIVEL DE PERIGO
