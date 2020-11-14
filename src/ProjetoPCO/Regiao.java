@@ -194,10 +194,10 @@ public class Regiao {
 	 * @return
 	 */
 	public NivelPerigo nivelPerigo(Calendar data, int[] tempoLimites) {
-		NivelPerigo result = null;
+		NivelPerigo result = NivelPerigo.VERDE;
 		int difAno =  data.get(Calendar.YEAR) - this.ultFogo.get(Calendar.YEAR);
 		int nivel = 0;
-		for (int i = 0; i < tempoLimites.length; i++) {
+		for (int i = 0; i < tempoLimites.length && i < tempoLimites.length && i - 1 >= 0; i++) {
 			if (tempoLimites[i - 1] < difAno && difAno <= tempoLimites[i]) {
 				nivel = i;
 			} else if (tempoLimites[tempoLimites.length - 1] < difAno) {
@@ -227,8 +227,16 @@ public class Regiao {
 	 * Representacao textual da Regiao
 	 * @return
 	 */
-	private String toString() {
-		return "Nome: " + this.nome + " Data ult. fogo: " + this.ultFogo;
-		//falta a representacao da regiao
+	public String toString() {
+		String result = "Nome: " + this.nome + " Data ult. fogo: " + this.ultFogo + "\n";
+		StringBuilder resultRegiao = new StringBuilder();
+		for (int i = 0; i < this.regiao.length; i++) {
+			for (int j = 0; j < this.regiao[i].length; j++) {
+				resultRegiao.append(this.regiao[i][j]);
+			}
+			resultRegiao.append("\n");
+		}
+		result += resultRegiao.toString();
+		return result;
 	}
 }

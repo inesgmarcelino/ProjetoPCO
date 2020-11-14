@@ -65,9 +65,8 @@ public class Instituicao {
 	 * @return Informacao pedida numa lista de pares (int,int)
 	 */
 	public List<Par<String,NivelPerigo>> niveisDePerigo() {
-		List<Par<String,NivelPerigo>> listaNiveis = null;
+		List<Par<String,NivelPerigo>> listaNiveis = new ArrayList<Par<String,NivelPerigo>>();
 		Calendar now = Calendar.getInstance();
-		
 		for (Regiao r: this.regioes) {
 			String p = r.nome();
 			NivelPerigo s = r.nivelPerigo(now, RISCO_ANOS);
@@ -84,12 +83,19 @@ public class Instituicao {
 	 * @return Array ...
 	 */
 	public EstadoSimulacao[][] alvoSimulacao() {
-		Regiao rMaiorPerigo = this.regioes.get(0);
-		//
-		for (Regiao r: this.regioes) {
-		// tem que devolver 
-		
-		return alvo;
+		List<Par<String,NivelPerigo>> listaPerigo = niveisDePerigo();
+		NivelPerigo perigo = NivelPerigo.VERDE;	
+		int i = 0;
+		for (Par<String,NivelPerigo> lista: listaPerigo) {
+			if (lista.segundo().ordinal() > perigo.ordinal()) {
+				for (int j = 0; j < this.regioes.size(); j++) {
+					if (lista.primeiro().equals(this.regioes.get(j).nome())) {
+						i = j;
+					}
+				}
+			}
+		}
+		return this.regioes.get(i).alvoSimulacao();
 	}
 	
 	/**
@@ -126,10 +132,7 @@ public class Instituicao {
 	public String toString() {
 		StringBuilder result = new StringBuilder();
 		result.append("Designacao: " + this.designacao + "\n");
-		for (Regiao r: this.regioes) {
-			result.append("Nome: " + r.nome());
-			
-		}
+		result.append("Regiao maior perigo: ");
 		return result.toString();
 	}
 }
