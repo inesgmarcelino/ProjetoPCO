@@ -1,11 +1,8 @@
 package ProjetoPCO;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Scanner;
+
 
 /**
  * Classe que representa as Regioes
@@ -16,7 +13,7 @@ public class Regiao {
 	
 	private String nome;
 	private Calendar ultFogo;
-	private String[][] regiao; //not sure
+	private String[][] regiao; 
 	private List<Par<Integer,Integer>> casas;
 	private List<Par<Integer,Integer>> estradas;
 	private List<Par<Integer,Integer>> agua;
