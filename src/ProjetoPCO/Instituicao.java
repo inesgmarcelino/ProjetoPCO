@@ -134,8 +134,16 @@ public class Instituicao {
 	 */
 	public String toString() {
 		StringBuilder result = new StringBuilder();
+		result.append("*****************\n");
 		result.append("Designacao: " + this.designacao + "\n");
-		result.append("Regiao maior perigo: ");
+		result.append("Regiao maior perigo: \n");
+		result.append("-------- REGIOES -------\n");
+		result.append("Nivel perigo de fogo: \n");
+		for (Regiao r: this.regioes) {
+			result.append(r.toString());
+		}
+		result.append("--------------------\n");
+		result.append("***************************\n");
 		return result.toString();
 	}
 }

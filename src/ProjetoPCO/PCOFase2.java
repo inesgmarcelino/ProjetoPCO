@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
-
 /**
  * Programa para testar as classes Instituicao e Regiao feitas
  * pelos alunos na Fase 2 do trabalho de PCO
@@ -33,21 +32,21 @@ public class PCOFase2 {
 		// Constroi uma instancia de Instituicao
 		Instituicao meuDGF = new Instituicao("Direcao Geral de Fogos");
 		//Ler informacao de uma regiao e acrescenta-la ao meuDGF
-		lerCriarInserirRegiao("in1.txt", meuDGF);	
+		lerCriarInserirRegiao("in1.txt", meuDGF);
+		System.out.println(meuDGF.toString());		
 
 		if(!meuDGF.existeRegiao("Amareleja")) {
 			System.out.println("Erro inserir regiao");
 		}
-		
-		// metodo ardiveis da classe Regiao está com count = 0 dá false
+
 		if(!meuDGF.podeAtuar()) {
 			System.out.println("Erro pode atuar");
 		}
-		
+
 		// Pede ao meuDGF o alvo para a simulacao (que sera' a 
 		// regiao com maior perigo de fogo
 		EstadoSimulacao[][] alvo = meuDGF.alvoSimulacao();
-		
+
 		// Cria um simulador dando-lhe esse alvo para trabalhar
 		// define o ponto de ignicao e faz 3 passos de simulacao
 		// No fim usa o resultado da simulacao para registar um fogo
@@ -83,7 +82,6 @@ public class PCOFase2 {
 
 		// Pede o novo alvo de simulacao 'a instituicao
 		alvo = meuDGF.alvoSimulacao();
-		
 
 		// Cria um novo simulador, afeta um elemento onde vai começar 
 		// o fogo e faz simulacao 
@@ -102,7 +100,7 @@ public class PCOFase2 {
 
 
 	} // Fim do metodo main
-//
+
 	/**
 	 * Ler informacao de uma regiao a partir de um ficheiro, criar
 	 * uma regiao com essa informacao e adiciona-la 'a instituicao dada
@@ -127,9 +125,8 @@ public class PCOFase2 {
 
 		dirGeral.adicionaRegiao(nome, dataUltFogo, largura, altura, 
 				casas, estradas, agua);
-		
 	}
-//
+
 	/**
 	 * 
 	 * @param linha A string contendo ano, mes e dia 
@@ -138,11 +135,11 @@ public class PCOFase2 {
 	 * @requires linha != null
 	 */
 	private static Calendar lerData(String linha) {
-		String[] valores = linha.split(" ");
+		String[] valores = linha.split(" ");		
 		Calendar result = Calendar.getInstance(); 
 		// ano, mes, dia
 		result.set(Integer.parseInt(valores[0]), 
-				Integer.parseInt(valores[1]) - 1,
+				Integer.parseInt(valores[1]),
 				Integer.parseInt(valores[2]));
 		return result;
 	}

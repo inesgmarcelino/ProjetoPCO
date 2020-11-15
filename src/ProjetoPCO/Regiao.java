@@ -230,15 +230,15 @@ public class Regiao {
 	 * @return
 	 */
 	public String toString() {
-		String result = "Nome: " + this.nome + " Data ult. fogo: " + this.ultFogo + "\n";
-		StringBuilder resultRegiao = new StringBuilder();
+		StringBuilder result = new StringBuilder();
+		result.append("Nome: " + this.nome() + "	Data ult. fogo: " + this.ultFogo.YEAR + "/" + this.ultFogo.MONTH + "/" 
+				+ this.ultFogo.DAY_OF_MONTH+ "\n");
 		for (int i = 0; i < this.regiao.length; i++) {
 			for (int j = 0; j < this.regiao[i].length; j++) {
-				resultRegiao.append(this.regiao[i][j]);
+				result.append(this.regiao[i][j]);
 			}
-			resultRegiao.append("\n");
+			result.append("\n");
 		}
-		result += resultRegiao.toString();
-		return result;
+		return result.toString();
 	}
 }
