@@ -199,7 +199,7 @@ public class Regiao {
 		} else {
 			for (int i = 1; i < tempoLimites.length; i++) {
 				if (tempoLimites[i - 1] < difAno && tempoLimites[i] >= difAno) {
-					perigo = i + 1;
+					perigo = i;
 				} else if (tempoLimites[tempoLimites.length - 1] < difAno) {
 					perigo = NivelPerigo.values()[NivelPerigo.values().length - 1].ordinal();
 				}
@@ -213,7 +213,6 @@ public class Regiao {
 				}
 			}
 		}
-		
 		int quociente = (this.ardiveis() - obstaculos) / (this.regiao.length * this.regiao[0].length);
 		perigo *= (1 + quociente);
 		
