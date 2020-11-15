@@ -123,7 +123,7 @@ public class Instituicao {
 	 */
 	public void registaFogo(String regiao, Calendar data, List<Par<Integer,Integer>> sitios) {
 		for (Regiao r: this.regioes) {
-			if (r.nome() == regiao) {
+			if (r.nome().equals(regiao)) {
 				r.registaFogo(data, sitios);
 			}
 		}
@@ -136,13 +136,16 @@ public class Instituicao {
 		StringBuilder result = new StringBuilder();
 		result.append("*****************\n");
 		result.append("Designacao: " + this.designacao + "\n");
-		result.append("Regiao maior perigo: \n");
+		result.append("Regiao maior perigo: " + "\n");
 		result.append("-------- REGIOES -------\n");
-		result.append("Nivel perigo de fogo: \n");
 		for (Regiao r: this.regioes) {
+			for (Par<String,NivelPerigo> p : niveisDePerigo()) {
+				if (r.nome().equals(p.primeiro())) {
+					result.append("Nivel perigo de fogo: " + p.segundo() + "\n");
+				}
+			}
 			result.append(r.toString());
 		}
-		result.append("--------------------\n");
 		result.append("***************************\n");
 		return result.toString();
 	}

@@ -196,12 +196,13 @@ public class Regiao {
 	public NivelPerigo nivelPerigo(Calendar data, int[] tempoLimites) {
 		int perigo = 0;
 		int difAno = data.get(Calendar.YEAR) - this.ultFogo.get(Calendar.YEAR);
+		
 		if (difAno <= tempoLimites[0]) {
 			perigo = 0;
 		} else {
 			for (int i = 1; i < tempoLimites.length; i++) {
 				if (tempoLimites[i - 1] < difAno && tempoLimites[i] >= difAno) {
-					perigo = i;
+					perigo = i + 1;
 				} else if (tempoLimites[tempoLimites.length - 1] < difAno) {
 					perigo = NivelPerigo.values()[NivelPerigo.values().length - 1].ordinal();
 				}
@@ -231,14 +232,15 @@ public class Regiao {
 	 */
 	public String toString() {
 		StringBuilder result = new StringBuilder();
-		result.append("Nome: " + this.nome() + "	Data ult. fogo: " + this.ultFogo.YEAR + "/" + this.ultFogo.MONTH + "/" 
-				+ this.ultFogo.DAY_OF_MONTH+ "\n");
+		result.append("Nome: " + this.nome() + "	Data ult. fogo: " + this.ultFogo.get(Calendar.YEAR) + "/" 
+				+ this.ultFogo.get(Calendar.MONTH) + "/" + this.ultFogo.get(Calendar.DAY_OF_MONTH)+ "\n");
 		for (int i = 0; i < this.regiao.length; i++) {
 			for (int j = 0; j < this.regiao[i].length; j++) {
 				result.append(this.regiao[i][j]);
 			}
 			result.append("\n");
 		}
+		result.append("--------------------\n");
 		return result.toString();
 	}
 }
