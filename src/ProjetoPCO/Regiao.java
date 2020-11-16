@@ -232,7 +232,6 @@ public class Regiao {
 		if (Math.round(perigo) >= NivelPerigo.values().length) {
 			perigo = NivelPerigo.values()[NivelPerigo.values().length - 1].ordinal();
 		}
-		
 		return NivelPerigo.values()[(int)perigo];
 	}
 	
