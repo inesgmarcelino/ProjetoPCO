@@ -10,24 +10,30 @@ import java.util.List;
  * @date Novembro 2020
  */
 public class Regiao {
-	
+	// O nome da Regiao
 	private String nome;
+	// Data do ultimo fogo
 	private Calendar ultFogo;
+	// regiao
 	private String[][] regiao; 
+	// Lista com as posicoes das casas na regiao
 	private List<Par<Integer,Integer>> casas;
+	// Lista com as posicoes das estradas na regiao
 	private List<Par<Integer,Integer>> estradas;
+	// Lista com as posicoes da agua na regiao
 	private List<Par<Integer,Integer>> agua;
 
 	/**
 	 * Inicializa os atributos do novo objeto Regiao
-	 * @param nome
-	 * @param ultFogo
-	 * @param largura
-	 * @param altura
-	 * @param casas
-	 * @param estradas
-	 * @param agua
-	 */
+	 * @param nome O nome
+	 * @param ultFogo Data do ultimo fogo
+	 * @param largura Largura da regiao
+	 * @param altura Altura da regiao
+	 * @param casas	Lista com as posicoes das casas
+	 * @param estradas Lista com as posicoes das estradas
+	 * @param agua Lista com as posicoes da agua
+	 * @requires nome != null && ultFogo != null && largura > 0 && altura > 0 
+	 */			
 	public Regiao (String nome, Calendar ultFogo, int largura, int altura, List<Par<Integer,Integer>> casas,
 			List<Par<Integer,Integer>> estradas, List<Par<Integer,Integer>> agua) {
 		this.nome = nome;
@@ -37,6 +43,7 @@ public class Regiao {
 		this.agua = agua;
 		this.regiao = new String[largura][altura];
 		
+		// CONSTRUIR ARRAY BIDIMENSIONAL REGIAO
 		for (int i = 0; i < this.regiao.length; i++) {
 			for (int j = 0; j < this.regiao[i].length; j++) {
 				
@@ -68,13 +75,14 @@ public class Regiao {
 	
 	/**
 	 * Devolve o nome da Regiao
+	 * @return O nome da Regiao
 	 */
 	public String nome() {
 		return this.nome;
 	}
 	
 	/**
-	 * Devolve o numero de elementos ardiveis da Regiao
+	 * Conta o numero de elementos ardiveis ha na Regiao
 	 * @return count >= 0
 	 */
 	public int ardiveis() {
@@ -90,9 +98,10 @@ public class Regiao {
 	}
 	
 	/**
-	 * Regista um (classe/objeto?) Fogo
-	 * @param data
-	 * @param sitios
+	 * Regista um novo fogo
+	 * @param data Data do fogo
+	 * @param sitios Lista com as posicoes dos sitios ardidos no fogo
+	 * @requires data != null && sitios != null
 	 */
 	public void registaFogo(Calendar data, List<Par<Integer,Integer>> sitios) {
 		this.ultFogo = data;
@@ -111,11 +120,12 @@ public class Regiao {
 	
 	/**
 	 * Verifica se os dados da Regiao sao validos
-	 * @param largura
-	 * @param altura
-	 * @param casas
-	 * @param estradas
-	 * @param agua
+	 * @param largura Largura da regiao
+	 * @param altura Altura da regiao
+	 * @param casas	Lista com as posicoes das casas
+	 * @param estradas Lista com as posicoes das estradas
+	 * @param agua Lista com as posicoes da agua
+	 * @requires largura > 0 && altura > 0
 	 * @return true, se posicoes das casas, estradas e agua sao
 	 * corretas para um ambiente com a largura e altura dadas
 	 */
@@ -151,10 +161,10 @@ public class Regiao {
 	}
 	
 	/**
-	 * Devolve a matriz da regiao em que os terrenos e casas nao
+	 * A matriz da regiao em que os terrenos e casas nao
 	 * ardidos sao representados por LIVRE, e a agua, estradas e
 	 * os elementos ja ardidos sao representados por OBSTACULO
-	 * @return Array ...
+	 * @return matriz da regiao representada por LIVRE e OBSTACULO
 	 */
 	public EstadoSimulacao[][] alvoSimulacao() {
 		EstadoSimulacao[][] alvo = new EstadoSimulacao[this.regiao.length][this.regiao[0].length];
@@ -185,26 +195,24 @@ public class Regiao {
 	}
 	
 	/**
-	 * Devolve o nivel de perigo da Regiao
-	 * @param data
-	 * @param tempoLimites
-	 * @return
+	 * O nivel de perigo da Regiao
+	 * @param data Data atual
+	 * @param tempoLimites Array que define os riscos de anos que afetaram
+	 * o nivel de perigo da regiao
+	 * @requires data != null && tempoLimites != null
+	 * @return nivel de perigo da regiao
 	 */
 	public NivelPerigo nivelPerigo(Calendar data, int[] tempoLimites) {
-		int perigo = 0;
+		int perigo = -1;
 		int difAno = data.get(Calendar.YEAR) - this.ultFogo.get(Calendar.YEAR);
 		
-		if (difAno <= tempoLimites[0]) {
-			perigo = 0;
-		} else {
-			for (int i = 1; i < tempoLimites.length; i++) {
-				if (tempoLimites[i - 1] < difAno && tempoLimites[i] >= difAno) {
-					perigo = i;
-				} else if (tempoLimites[tempoLimites.length - 1] < difAno) {
-					perigo = NivelPerigo.values()[NivelPerigo.values().length - 1].ordinal();
-				}
+		for (int i = 0; i < tempoLimites.length && perigo == -1; i++) {
+			if (difAno <= tempoLimites[i]) {
+				perigo = i;
 			}
 		}
+		perigo = (perigo == -1 ? tempoLimites.length : perigo);
+		
 		int obstaculos = 0;
 		for (int i = 0; i < this.regiao.length; i++) {
 			for (int j = 0; j < this.regiao[i].length; j++) {
@@ -214,7 +222,7 @@ public class Regiao {
 			}
 		}
 		int quociente = (this.ardiveis() - obstaculos) / (this.regiao.length * this.regiao[0].length);
-		perigo *= (1 + quociente);
+		perigo = perigo * (1 + quociente);
 		
 		if (Math.round(perigo) >= NivelPerigo.values().length) {
 			perigo = NivelPerigo.values()[NivelPerigo.values().length - 1].ordinal();
@@ -224,7 +232,7 @@ public class Regiao {
 	
 	/**
 	 * Representacao textual da Regiao
-	 * @return
+	 * @return representacao string da Regiao
 	 */
 	public String toString() {
 		StringBuilder result = new StringBuilder();

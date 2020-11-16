@@ -15,12 +15,15 @@ public class Instituicao {
 	public static final int[] RISCO_ANOS = {2, 3, 5, 8};
 	public static final int[] VENTOS_LIMITES = {0, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21};
 	
+	// A designacao da Instituicao
 	private String designacao;
+	// ArrayList das regioes da Instituicao
 	private ArrayList<Regiao> regioes = new ArrayList<Regiao>();
 
 	/**
 	 * Inicializa os atributos do novo objeto Instituicao
-	 * @param designacao
+	 * @param designacao A designacao
+	 * @requires designacao != null
 	 */
 	public Instituicao(String designacao) {
 		this.designacao = designacao;
@@ -28,13 +31,14 @@ public class Instituicao {
 	
 	/**
 	 * Cria um novo objeto da classe Regiao
-	 * @param nome 
-	 * @param ultFogo Data do ultimo fogo que aconteceu
+	 * @param nome O nome
+	 * @param ultFogo Data do ultimo fogo 
 	 * @param largura A largura da regiao
 	 * @param altura A altura da regiao
-	 * @param casas
-	 * @param estradas
-	 * @param agua
+	 * @param casas Lista com as posicoes das casas
+	 * @param estradas Lista com as posicoes das estradas
+	 * @param agua Lista com as posicoes da agua
+	 * @requires nome != null && ultFogo != null && largura > 0 && altura > 0 
 	 */
 	public void adicionaRegiao(String nome, Calendar ultFogo, int largura, int altura, List<Par<Integer,Integer>> casas,
 			List<Par<Integer,Integer>> estradas, List<Par<Integer,Integer>> agua) {
@@ -44,7 +48,8 @@ public class Instituicao {
 	
 	/**
 	 * Verifica se existe alguma Regiao com esse nome na Instituicao
-	 * @param nome
+	 * @param nome O nome
+	 * @requires nome != null
 	 * @return true, se ja existir
 	 */
 	public boolean existeRegiao(String nome) {
@@ -57,8 +62,8 @@ public class Instituicao {
 	}
 	
 	/**
-	 * Devolver os nomes e os niveis de perigo das regioes da Instituicao
-	 * @return Informacao pedida numa lista de pares (int,int)
+	 * Nome da Regiao e nivel de perigo correspondente
+	 * @return Lista com pares da regiao e nivel de perigo correspondente
 	 */
 	public List<Par<String,NivelPerigo>> niveisDePerigo() {
 		List<Par<String,NivelPerigo>> listaNiveis = new ArrayList<Par<String,NivelPerigo>>();
@@ -73,10 +78,9 @@ public class Instituicao {
 		return listaNiveis;
 	}
 		
-	//ATENCAO! AQUI TEM QUE SER DEVOLVIDO A REGIAO COM MAIOR NIVEL DE PERIGO
 	/**
-	 * Devolve o alvo da simulacao da Regiao de maior nivel da Instituicao
-	 * @return Array ...
+	 * A matriz da regiao da instituicao que tem maior nivel de perigo
+	 * @return matriz da regiao da instituicao que tem maior nivel de perigo
 	 */
 	public EstadoSimulacao[][] alvoSimulacao() {
 		List<Par<String,NivelPerigo>> listaPerigo = niveisDePerigo();
@@ -112,10 +116,11 @@ public class Instituicao {
 	}
 	
 	/**
-	 * Regista um Fogo
-	 * @param regiao
-	 * @param data
-	 * @param sitios
+	 * Regista um novo fogo
+	 * @param regiao O nome
+	 * @param data Data do fogo
+	 * @param sitios Lista com as posicoes dos sitios ardidos pelo fogo
+	 * @requires regiao != null && data != null && sitios != null
 	 */
 	public void registaFogo(String regiao, Calendar data, List<Par<Integer,Integer>> sitios) {
 		for (Regiao r: this.regioes) {
@@ -127,6 +132,7 @@ public class Instituicao {
 	
 	/**
 	 * Representacao textual desta Instituicao
+	 * @return representacao string da Instituicao
 	 */
 	public String toString() {
 		StringBuilder result = new StringBuilder();
