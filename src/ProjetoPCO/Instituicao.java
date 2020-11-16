@@ -138,7 +138,24 @@ public class Instituicao {
 		StringBuilder result = new StringBuilder();
 		result.append("*****************\n");
 		result.append("Designacao: " + this.designacao + "\n");
-		result.append("Regiao maior perigo: " + "\n");
+		// Devolve o numero do indice da regiao de maior perigo da instituicao
+		List<Par<String,NivelPerigo>> listaPerigo = niveisDePerigo();
+		String nomeRegMaiorPerigo = null;
+		int indexMaiorPerigo = 0;
+		int indexReg = 0;
+		for (int i = 0; i < listaPerigo.size(); i++) {
+			if (listaPerigo.get(i).segundo().ordinal() > indexMaiorPerigo) {
+				indexMaiorPerigo = listaPerigo.get(i).segundo().ordinal();
+				nomeRegMaiorPerigo = listaPerigo.get(i).primeiro();
+			}
+		}
+		for (int i = 0; i < this.regioes.size(); i++) {
+			if (this.regioes.get(i).nome() == nomeRegMaiorPerigo) {
+				indexReg = i;
+			}
+		}
+		result.append("Regiao maior perigo: " + indexReg + "\n");
+		// Chama toString da classe Regiao
 		result.append("-------- REGIOES -------\n");
 		for (Regiao r: this.regioes) {
 			for (Par<String,NivelPerigo> p : niveisDePerigo()) {
@@ -148,6 +165,7 @@ public class Instituicao {
 			}
 			result.append(r.toString());
 		}
+		
 		result.append("***************************\n");
 		return result.toString();
 	}
